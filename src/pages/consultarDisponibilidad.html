@@ -11,14 +11,10 @@
         <h1>Consultar disponibilidad</h1>
     </header>
     <div class="background"></div>
-    <h2>Selecciona una reserva</h2>
-    <select id="listaReservas">
-        <option value="">Cargando reservas...</option>
-    </select>
-    <button id="confirmarAccionBtn" disabled onclick="verificarEstado()">Consultar</button>
-    <p id="estadoLab" style="text-align: center; font-size: 1.5vw; font-weight: bold;"></p>
-
+    <h2>Horarios disponibles</h2>
+    <div id="contenedorHorarios" class="horarios-container"></div>
     <script src="../js/consultarDisponibilidad.js" defer></script>
-
+    
+    <button id="backBtn">⬅️</button>
 </body>
 </html>

@@ -12,7 +12,7 @@ body {
 
 body::before {
     content: "";
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     background-image: url('../../assets/img/backgroundLibrary.jpg');
@@ -128,4 +128,42 @@ label {
     margin: 1vw auto; 
     padding: 1vw;
     font-size: 1vw;
+}
+
+.horarios-container {
+    display: flex;
+    flex-wrap: wrap;  /* Permite que los elementos se acomoden en varias filas */
+    gap: 20px;  /* Espacio entre cada horario */
+    padding: 20px;  /* Separación con los bordes */
+    justify-content: center; /* Centra los horarios */
+}
+
+.horario-box {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 8px;
+    min-width: 200px;
+    text-align: center;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 1.2vw;
+    font-weight: bold;
+    color: #2e6f2e;
+}
+
+#backBtn {
+    position: absolute;
+    top: 2vh;
+    left: 2vw;
+    background: none;
+    color: #d9534f; /* Mantiene el color rojo */
+    font-size: 3.0vw;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+}
+
+#backBtn:hover {
+    color: #c9302c; /* Oscurece un poco el rojo al pasar el cursor */
+    transform: scale(1.05);
 }
