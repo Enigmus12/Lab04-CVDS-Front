@@ -8,13 +8,15 @@
 </head>
 <body>
     <header>
-        <h1>Reservar Laboratorio</h1>
+        <h1>Reservar laboratorio</h1>
     </header>
-    <label for="listaLaboratorios">Selecciona un laboratorio:</label>
-    <select id="listaLaboratorios">
-        <option>Cargando...</option>
-    </select>
     <div class="background"></div>
-    <script src="../js/reservarLaboratorio.js"></script>
+    <h2>Selecciona una reserva</h2>
+    <select id="listaReservas">
+        <option value="">Cargando reservas...</option>
+    </select>
+    <button id="confirmarAccionBtn" disabled onclick="reservar()">Reservar</button>
+    <p id="estadoLab" style="text-align: center; font-size: 1.5vw; font-weight: bold;"></p>
+    <script src="../js/reservarLaboratorio.js" defer></script>
 </body>
 </html>
