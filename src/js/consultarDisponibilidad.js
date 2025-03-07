@@ -7,16 +7,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function mostrarReservas(bookings) {
     const lista = document.getElementById("listaReservas");
-    const reservarBtn = document.getElementById("reservarBtn");
+    const estadoBtn = document.getElementById("confirmarAccionBtn"); 
 
     lista.innerHTML = "";  
-    reservarBtn.disabled = true;  
+    estadoBtn.textContent = "Verificar disponibilidad";
+    estadoBtn.disabled = false;  
 
     if (bookings.length === 0) {
         const item = document.createElement("option");
-        item.textContent = "No hay reservas disponibles";
+        item.textContent = "No hay laboratorios disponibles";
         lista.appendChild(item);
         lista.disabled = true;
+        estadoBtn.disabled = true;
     } else {
         lista.disabled = false;
         bookings.forEach(booking => {
@@ -25,18 +27,30 @@ function mostrarReservas(bookings) {
             item.textContent = `ID: ${booking.bookingId} | Aula: ${booking.bookingClassRoom}`;
             lista.appendChild(item);
         });
-
-        lista.addEventListener("change", function () {
-            reservarBtn.disabled = !lista.value;  
-        });
     }
+
+    estadoBtn.addEventListener("click", verificarEstado);
 }
 
-function reservar() {
-    const bookingId = document.getElementById("listaReservas").value;
-    if (!bookingId) return alert("Selecciona una reserva antes de continuar.");
-    fetch(`http://localhost:8080/booking-service/bookings/make/${bookingId}`, { method: "PUT" })
-        .then(response => response.ok ? response.json() : Promise.reject("Ya esta reservado este lab"))
-        .then(() => alert("Reserva realizada con éxito."))
-        .catch(error => alert(error));
+function verificarEstado() {
+    const lista = document.getElementById("listaReservas");
+    const bookingId = lista.value;
+    const estadoLab = document.getElementById("estadoLab");
+
+    fetch(`http://localhost:8080/booking-service/bookings/${bookingId}`)
+        .then(response => response.json())
+        .then(booking => {
+            if (!   booking.disable) {  
+                estadoLab.textContent = "❌ El laboratorio NO está disponible.";
+                estadoLab.style.color = "red";
+            } else {
+                estadoLab.textContent = "✅ El laboratorio está DISPONIBLE.";
+                estadoLab.style.color = "green";
+            }
+        })
+        .catch(error => {
+            console.error("Error obteniendo el estado:", error);
+            estadoLab.textContent = "⚠️ Error al obtener el estado.";
+            estadoLab.style.color = "orange";
+        });
 }
