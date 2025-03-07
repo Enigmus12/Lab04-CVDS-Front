@@ -3,6 +3,10 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(data => mostrarReservas(data))
         .catch(error => console.error("Error obteniendo reservas:", error));
+        //botton back
+        document.getElementById("backBtn").addEventListener("click", function() {
+            window.location.href = "../../index.html";
+        });
 });
 
 function mostrarReservas(bookings) {
@@ -10,7 +14,6 @@ function mostrarReservas(bookings) {
     const estadoBtn = document.getElementById("confirmarAccionBtn"); 
 
     lista.innerHTML = "";  
-    estadoBtn.textContent = "Verificar disponibilidad";
     estadoBtn.disabled = false;  
 
     if (bookings.length === 0) {

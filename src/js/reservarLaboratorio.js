@@ -3,6 +3,10 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(data => mostrarReservas(data))
         .catch(error => console.error("Error obteniendo reservas:", error));
+        //botton back
+        document.getElementById("backBtn").addEventListener("click", function() {
+            window.location.href = "../../index.html";
+        });
 });
 
 function mostrarReservas(bookings) {
