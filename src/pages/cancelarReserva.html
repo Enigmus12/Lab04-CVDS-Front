@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancelar reserva</title>
+    <link rel="stylesheet" href="../css/styles.css"> 
+</head>
+<body>
+    <header>
+        <h1>Cancelar reserva</h1>
+    </header>
+    <div class="background"></div>
+    <h2>Selecciona una reserva</h2>
+    <select id="listaReservas">
+        <option value="">Cargando reservas...</option>
+    </select>
+    <button id="confirmarAccionBtn" disabled onclick="cancelar()">Cancelar</button>
+    <p id="estadoLab" style="text-align: center; font-size: 1.5vw; font-weight: bold;"></p>
+
+    <button id="backBtn">⬅️</button>
+
+    <script src="../js/cancelarReserva.js" defer></script>
+
+</body>
+</html>
